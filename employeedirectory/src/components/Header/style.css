@@ -1,8 +1,11 @@
-.title {
-  width: 100%;
+.header {
+  display: grid;
+  grid-template-columns: 20% 25% 5% 5% 15% 30%;
+  grid-template-rows: 30px;
+  grid-gap: 2px;
+  align-items: center;
   text-align: center;
-  font-size: 3rem;
-  text-decoration: underline;
-  color: #2A77AE;
-  margin-bottom: 50px;
+  vertical-align: middle;
+  font-weight: bold;
+  
 }

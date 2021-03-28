@@ -1,8 +1,8 @@
 import React from "react";
 import "./style.css";
-import Card from '../Card';
+import EmployeeCard from '../EmployeeCard';
 
-class ListHeader extends React.Component {
+class Header extends React.Component {
 
     state = {
         alphabetical: true,
@@ -90,8 +90,6 @@ class ListHeader extends React.Component {
                 <div className="header">
                     <div>Photo</div>
                     <div><p onClick={this.sortName} className="name">Name</p> </div>
-                    <div>Gender</div>
-                    <div><p onClick={this.sortAge} className="age">Age</p></div>
                     <div>Phone</div>
                     <div>E-mail</div>
                 </div>
@@ -100,13 +98,11 @@ class ListHeader extends React.Component {
                     this.state.sortedEmployees.length > 0 &&
                     this.state.sortedEmployees.map((item, index) => (
 
-                            <Card
+                            <EmployeeCard
                                 image={item.picture.large}
                                 first={item.name.first}
                                 last={item.name.last}
                                 title={item.name.title}
-                                gender={item.gender}
-                                age={item.dob.age}
                                 phone={item.cell}
                                 email={item.email}
                             />
@@ -117,4 +113,4 @@ class ListHeader extends React.Component {
     }
 }
 
-export default ListHeader;
+export default Header;
