@@ -1,0 +1,11 @@
+h1{
+   text-align: center; 
+}
+p{
+    text-align: center;
+}
+.header{
+    background-color: lightblue;
+    height: 20vh;
+    padding-top: 5px;
+}

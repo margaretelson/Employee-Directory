@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import API from "./API.js";
 import Card from './components/Card';
+import Wrapper from './components/Wrapper';
+import Header from './components/Header';
+
 
 function App (){
   const [employeeState, setemployeeState] = useState([])
@@ -14,23 +17,25 @@ function App (){
   },[])
 
   const removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    //const friends = friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    //this.setState({ friends });
   };
-
-  console.log(employeeState)  
+  console.log(employeeState) 
+  
+  
   return (
-      <div>
-      <Card 
-      name={employee.name}/>
-       {employeeState.map(employee => (
-       <p>{employee.name.first} {employee.name.last} / {employee.email} </p>
-       ))}       
-      </div>
+    
+    <Wrapper>
+      <Header />
+      <Card />
+    </Wrapper>
+      
     );
   
 }
 
 export default App;
+
+
+{/*{employeeState.map(employee => (
+       <p>{employee.name.first} {employee.name.last} / {employee.email} </p>
+       ))}       
+</div>*/}
