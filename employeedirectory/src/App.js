@@ -33,9 +33,3 @@ function App (){
 }
 
 export default App;
-
-
-{/*{employeeState.map(employee => (
-       <p>{employee.name.first} {employee.name.last} / {employee.email} </p>
-       ))}       
-</div>*/}
