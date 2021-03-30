@@ -1,12 +1,12 @@
 import React from "react";
-import App from "App.js";
 import "./style.css";
 
-function Card(employee) {
+function Card(props) {
     return (
-
         <div className="card">
-            <div><img alt={employee.last} src={employee.image}></img></div>
+            <div className="img-container">
+                <img alt={props.name} src={props.picture} />
+            </div>
             <div>{employee.title} {employee.first} {employee.last} </div>
             <div>{employee.email}</div>
         </div>

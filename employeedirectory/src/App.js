@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "./API.js";
+import Card from './components/Card';
 
 function App (){
   const [employeeState, setemployeeState] = useState([])
@@ -22,10 +23,9 @@ function App (){
   console.log(employeeState)  
   return (
       <div>
-       Employee List
-      
+      <Card 
+      name={employee.name}/>
        {employeeState.map(employee => (
-        //<Card />
        <p>{employee.name.first} {employee.name.last} / {employee.email} </p>
        ))}       
       </div>
