@@ -1,41 +1,36 @@
-import React, { Component } from "react";
-import FriendCard from "./components/EmployeeCard";
-import Wrapper from "./components/Wrapper";
-import Title from "./components/Header";
-import friends from "./friends.json";
+import React, { useEffect, useState } from "react";
+import API from "./API.js";
 
-class App extends Component {
-  // Setting this.state.friends to the friends json array
-  state = {
-    friends
-  };
+function App (){
+  const [employeeState, setemployeeState] = useState([])
 
-  removeFriend = id => {
+  useEffect(function(){
+    API.search().then((result) => {
+      console.log(result.data.results)
+      setemployeeState(result.data.results)
+    }
+  )
+  },[])
+
+  const removeFriend = id => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
+    //const friends = friends.filter(friend => friend.id !== id);
     // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
+    //this.setState({ friends });
   };
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
-  render() {
-    return (
-      <Wrapper>
-        <Title>Friends List</Title>
-        {this.state.friends.map(friend => (
-          <FriendCard
-            removeFriend={this.removeFriend}
-            id={friend.id}
-            key={friend.id}
-            name={friend.name}
-            image={friend.image}
-            occupation={friend.occupation}
-            location={friend.location}
-          />
-        ))}
-      </Wrapper>
+  console.log(employeeState)  
+  return (
+      <div>
+       Employee List
+      
+       {employeeState.map(employee => (
+        //<Card />
+       <p>{employee.name.first} {employee.name.last} / {employee.email} </p>
+       ))}       
+      </div>
     );
-  }
+  
 }
 
 export default App;

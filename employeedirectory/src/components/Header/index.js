@@ -1,116 +1,13 @@
 import React from "react";
 import "./style.css";
-import EmployeeCard from '../EmployeeCard';
 
-class Header extends React.Component {
-
-    state = {
-        alphabetical: true,
-        ascending: true,
-        sortedEmployees: [],
-        employees: []
-    }
-
-    componentDidMount() {
-        if (this.state.sortedEmployees.length < 1) {
-            this.setState({
-                sortedEmployees: this.props.empList
-            })
-        }
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.empList !== prevProps.empList) {
-            this.setState({
-                sortedEmployees: this.props.empList
-            })
-        }
-    }
-
-    sortName = () => {
-        let sortEmp = [];
-        if (this.state.alphabetical) {
-            sortEmp = this.props.empList.sort((a, b) => {
-                var nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
-                if (nameA < nameB)
-                    return -1
-                if (nameA > nameB)
-                    return 1
-                return 0
-            })
-        } else {
-            sortEmp = this.props.empList.sort((a, b) => {
-                var nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
-                if (nameA > nameB)
-                    return -1
-                if (nameA < nameB)
-                    return 1
-                return 0
-            })
-        }
-        this.setState({
-            alphabetical: !this.state.alphabetical,
-            sortedEmployees: sortEmp
-
-        })
-    }
-
-    sortAge = () => {
-        let sortEmp = [];
-        if (this.state.ascending) {
-            sortEmp = this.props.empList.sort((a, b) => {
-                var nameA = a.dob.age, nameB = b.dob.age;
-                if (nameA < nameB)
-                    return -1
-                if (nameA > nameB)
-                    return 1
-                return 0
-            })
-        } else {
-            sortEmp = this.props.empList.sort((a, b) => {
-                var nameA = a.dob.age, nameB = b.dob.age;
-                if (nameA > nameB)
-                    return -1
-                if (nameA < nameB)
-                    return 1
-                return 0
-            })
-        }
-        this.setState({
-            ascending: !this.state.ascending,
-            sortedEmployees: sortEmp
-
-        })
-    }
-
-    render() {
-        return (
-
-            <div>
-                <div className="header">
-                    <div>Photo</div>
-                    <div><p onClick={this.sortName} className="name">Name</p> </div>
-                    <div>Phone</div>
-                    <div>E-mail</div>
-                </div>
-
-                {
-                    this.state.sortedEmployees.length > 0 &&
-                    this.state.sortedEmployees.map((item, index) => (
-
-                            <EmployeeCard
-                                image={item.picture.large}
-                                first={item.name.first}
-                                last={item.name.last}
-                                title={item.name.title}
-                                phone={item.cell}
-                                email={item.email}
-                            />
-                    ))
-                }
-            </div>
-        );
-    }
+function Header () {
+    return (
+        <div className="header">
+            <h1>Employee Directory</h1>
+            <p></p>
+        </div>
+    )
 }
 
 export default Header;
