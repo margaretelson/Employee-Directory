@@ -1,32 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
-import App from "./App.js"
+import App from "../.././App";
+import API from "../../Utils/API";
 
-<App />
+<App />;
 
+function Card(props) {
+  const [employeeState, setEmployeeState] = useState([]);
 
-    function Card (props) {
-        const [employeeState, setemployeeState] = useState([])
+  useEffect(function () {
+    API.search().then((result) => {
+      console.log(result.data.results);
+      setEmployeeState(result.data.results);
+      console.log(employeeState)
+    });
+  }, []);
 
-        useEffect(function(){
-        API.search().then((result) => {
-            console.log(result.data.results)
-            setemployeeState(result.data.results)
-        }
-        )
-        },[]) 
-            
-        return (
-            employeeState.map(props => (
-                <div className="card">
-                    <div className="img-container">
-                        <img alt={props.firstname} src={props.picture} />
-                    </div>
-                    <p>{props.firstname}</p>
-                    <p>{props.email}</p>
-                </div>
-             ))
-           
-        )} 
+  return employeeState.map((employee) => (
+    <div className="card">
+      <div className="img-container">
+        <img id="pic" alt={employee.name.first} src={employee.picture.large}/>
+        <p id="info"> {employee.name.first} {employee.name.last} </p>
+        <p id="email">{employee.email}</p>
+      </div>
+      
+    </div>
+  ));
+}
 
 export default Card;
