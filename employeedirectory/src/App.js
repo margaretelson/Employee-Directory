@@ -2,14 +2,25 @@ import React, { useEffect, useState } from "react";
 import Card from './components/Card';
 import Wrapper from './components/Wrapper';
 import Header from './components/Header';
-import Nav from './components/Nav'
+import Nav from './components/Nav';
+import API from './Utils/API'
 
 
 function App (){
+
+  const [employeeState, setEmployeeState] = useState([]);
+
+  useEffect(function () {
+    API.search().then((result) => {
+      console.log(result.data.results);
+      setEmployeeState(result.data.results);
+      console.log(employeeState)
+    });
+  }, []);
  
   const [ searchTerm, setSearchTerm ] = useState("");
   const [ sorted, setSorted] = useState(false);
-  const [ data, setEmployees ] = useState();
+  const [ data, setEmployees ] = useState([]);
   
 
   
@@ -18,12 +29,11 @@ function App (){
 }
 
 function handleSortByName() {
-  // sort array ascending or descending by first name
   if (!sorted) {
-      setEmployees(data.sort((a, b) => (a.name > b.name) ? 1 : -1));
+      setEmployees(employeeState.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1));
       setSorted(true);
   } else {
-      setEmployees(data.sort((a, b) => (a.name > b.name) ? -1 : 1));
+      setEmployees(employeeState.sort((a, b) => (a.name.first > b.name.first) ? -1 : 1));
       setSorted(false);
   }
 }
@@ -38,7 +48,8 @@ function handleSortByName() {
       handleSortByName={handleSortByName}
       />
       <Header />
-      <Card />
+      <Card 
+      employees={employeeState}/>
     </Wrapper>
       
     );

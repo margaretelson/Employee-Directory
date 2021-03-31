@@ -6,17 +6,9 @@ import API from "../../Utils/API";
 <App />;
 
 function Card(props) {
-  const [employeeState, setEmployeeState] = useState([]);
 
-  useEffect(function () {
-    API.search().then((result) => {
-      console.log(result.data.results);
-      setEmployeeState(result.data.results);
-      console.log(employeeState)
-    });
-  }, []);
 
-  return employeeState.map((employee) => (
+  return props.employees.map((employee) => (
     <div className="card">
       <div className="img-container">
         <img id="pic" alt={employee.name.first} src={employee.picture.large}/>
