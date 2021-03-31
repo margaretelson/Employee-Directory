@@ -26,17 +26,20 @@ function App (){
   
   function handleSearchTerm(event)  {
     setSearchTerm(event.target.value)
-}
-
-function handleSortByName() {
-  if (!sorted) {
-      setEmployees(employeeState.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1));
-      setSorted(true);
-  } else {
-      setEmployees(employeeState.sort((a, b) => (a.name.first > b.name.first) ? -1 : 1));
-      setSorted(false);
   }
-}
+
+  function handleSortByName() {
+    if (!sorted) {
+        setEmployees(employeeState.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1));
+        setSorted(true);
+    } else {
+        setEmployees(employeeState.sort((a, b) => (a.name.first > b.name.first) ? -1 : 1));
+        setSorted(false);
+    }
+  }
+
+
+  
 
 
   return (

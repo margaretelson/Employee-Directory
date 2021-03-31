@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
-function Nav({ onSearch, searchTerm, handleSortByName }) { 
+function Nav({ onSearch, searchTerm, handleSortByName }, props) { 
+    function handleFormSubmit(event){
+        event.preventDefault()
+    }
+    
     return (
         <div className="navbar">
             <form >
@@ -13,7 +17,8 @@ function Nav({ onSearch, searchTerm, handleSortByName }) {
                     placeholder="search employee"/>
             </form>
             <div className="buttons">
-                <button onClick={handleSortByName} className="namebtn">Name</button>
+                <button onClick={handleSortByName} className="namebtn">Filter Alphabetically!</button>
+                
             </div>
             
         </div>
