@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
-function Nav({ onSearch, searchTerm, handleSortByName }, props) { 
+function Nav({ handleSearchTerm, searchTerm, handleSortByName }, props) { 
     function handleFormSubmit(event){
         event.preventDefault()
     }
@@ -11,7 +11,7 @@ function Nav({ onSearch, searchTerm, handleSortByName }, props) {
             <form >
                 <input
                     value={searchTerm} 
-                    onChange={onSearch} 
+                    onChange={handleSearchTerm} 
                     className="form"
                     type="text"
                     placeholder="search employee"/>

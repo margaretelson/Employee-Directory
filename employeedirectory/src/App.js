@@ -46,12 +46,13 @@ function App (){
     
     <Wrapper>
       <Nav 
-      onSearch={handleSearchTerm}
+      handleSearchTerm={handleSearchTerm}
       searchTerm={searchTerm}
       handleSortByName={handleSortByName}
       />
       <Header />
       <Card 
+      searchTerm={searchTerm}
       employees={employeeState}/>
     </Wrapper>
       
